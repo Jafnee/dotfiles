@@ -14,6 +14,7 @@ def backup(imp=False):
 	else:
 		print("Backing up...")
 		dst = cfg.bdir
+		os.makedirs(dst)
 	for item in cfg.items:
 		print("  "+item)
 		src = joinpth(cfg.dir, item)
