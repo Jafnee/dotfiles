@@ -10,4 +10,4 @@ dir = os.path.expanduser('~/')
 bdir = os.path.join(sdir,'dotfiles_backup')
 
 # Dotfile names or dir
-items = ['.bashrc']
+items = ['.bashrc', '.i3/config']
