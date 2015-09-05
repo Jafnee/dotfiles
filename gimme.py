@@ -44,7 +44,10 @@ def symlink():
 		try:
 			os.symlink(src,dst)
 		except FileExistsError:
-			os.remove(dst)
+			try:
+				os.remove(dst)
+			except IsADirectoryError:
+				shutil.rmtree(dst)
 			os.symlink(src,dst)
 	print("Done!")
 
@@ -52,4 +55,4 @@ if __name__ == '__main__':
 	# main()
 	backup()
 	# import_()
-	# symlink()
+	symlink()
