@@ -5,6 +5,8 @@ import shutil
 
 import config as cfg
 
+DEBUG=True
+
 def backup(imp=False):
 	if imp:
 		print("Importing...")
@@ -19,7 +21,12 @@ def backup(imp=False):
 		try:
 			shutil.copy2(src, dst)
 		except IsADirectoryError:
-			print("Can't copy dirs yet!")
+			dst = joinpth(dst, item)
+			try:
+				shutil.copytree(src, dst)
+			except FileExistsError:
+				shutil.rmtree(dst)
+				shutil.copytree(src, dst)
 		except shutil.SameFileError:
 			pass
 	print("Done!")
@@ -43,5 +50,5 @@ def symlink():
 if __name__ == '__main__':
 	# main()
 	backup()
-	import_()
-	symlink()
+	# import_()
+	# symlink()
