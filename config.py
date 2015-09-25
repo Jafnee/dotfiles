@@ -65,5 +65,7 @@ class DotFile(object):
 # Add dotfiles here
 dotfiles = [
     DotFile('i3', dirs='.i3'),
-    DotFile('subl3', path='~/.config/sublime-text-3', dirs='Packages/User'),
+    DotFile('subl3', path='~/.config/sublime-text-3', dirs='Packages/User/'),
+    DotFile('bash', files='.bashrc'),
+    DotFile('zsh', files='.zshrc'),
 ]

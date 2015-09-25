@@ -19,10 +19,11 @@ def backup():
 		# backup dirs
 		for d, dp in zip(df.dirs, df.dir_paths):
 			try:
-				shutil.copytree(dp, joinpth(cfg.BACKUP_DIR, d))
+				print((dp, joinpth(cfg.BACKUP_DIR, df.name, d)))
+				shutil.copytree(dp, joinpth(cfg.BACKUP_DIR, df.name, d))
 			except:
 				shutil.rmtree(joinpth(cfg.BACKUP_DIR, d))
-				shutil.copytree(dp, joinpth(cfg.BACKUP_DIR, d))
+				shutil.copytree(dp, joinpth(cfg.BACKUP_DIR, df.name, d))
 
 		# backup files
 		for f, fp in zip(df.files, df.file_paths):
