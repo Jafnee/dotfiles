@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# dirs
+mkdir -p $HOME/Workspaces
+
 apt-get install -y vim
 apt-get install -y curl
 
