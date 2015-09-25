@@ -5,6 +5,7 @@ mkdir -p $HOME/Workspaces
 
 apt-get install -y vim
 apt-get install -y curl
+apt-get install -y gksu
 
 # git
 apt-get install -y git
