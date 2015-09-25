@@ -1,61 +1,45 @@
 #!/usr/bin/env python3
+import sys
 import os
 from os.path import join as joinpth
 import shutil
 
 import config as cfg
 
-DEBUG=True
+def _mkdirs(path):
+	"""Silent makedirs
+	"""
+	try:
+		os.makedirs(path)
+	except FileExistsError:
+		pass
 
-def backup(imp=False):
-	if imp:
-		print("Importing...")
-		dst = cfg.sdir
-	else:
-		print("Backing up...")
-		dst = cfg.bdir
-		try:
-			os.makedirs(dst)
-		except FileExistsError:
-			pass
-	for item in cfg.items:
-		print("  "+item)
-		src = joinpth(cfg.dir, item)
+def backup():	
+	for df in cfg.dotfiles:
+		# backup files
+		for f, fp in zip(df.files, df.file_paths):
+			_mkdirs(joinpth(cfg.BACKUP_DIR, df.name, os.path.dirname(f)))
+			shutil.copy2(fp, joinpth(cfg.BACKUP_DIR, df.name, f))
 
-		try:
-			shutil.copy2(src, dst)
-		except IsADirectoryError:
-			dst = joinpth(dst, item)
-			try:
-				shutil.copytree(src, dst)
-			except FileExistsError:
-				shutil.rmtree(dst)
-				shutil.copytree(src, dst)
-		except shutil.SameFileError:
-			pass
-	print("Done!")
+		# backup dirs
+		for d in df.dirs:
+			print(d)
 
-def import_():
-	backup(imp=True)
 
-def symlink():
-	print("Linking...")
-	for item in cfg.items:
-		print("  "+item)
-		src = joinpth(cfg.sdir, item)
-		dst = joinpth(cfg.dir, item)
-		try:
-			os.symlink(src,dst)
-		except FileExistsError:
-			try:
-				os.remove(dst)
-			except IsADirectoryError:
-				shutil.rmtree(dst)
-			os.symlink(src,dst)
-	print("Done!")
+def print_help():
+	print("Help msg\nand stuff")
+	sys.exit()
 
 if __name__ == '__main__':
+	try:
+		arg = 	sys.argv[1]
+	except IndexError:
+		print_help()
+	if arg in ('backup', 'b'):
+		backup()
+	else:
+		print_help()
 	# main()
-	backup()
+	# backup()
 	# import_()
 	# symlink()
