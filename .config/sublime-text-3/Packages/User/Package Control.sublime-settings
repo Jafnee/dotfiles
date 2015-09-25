@@ -1,0 +1,19 @@
+{
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"BracketHighlighter",
+		"Glue",
+		"Grunt Snippets",
+		"HTML-CSS-JS Prettify",
+		"Monokai Extended",
+		"Package Control",
+		"Sass",
+		"SassBeautify",
+		"SideBarEnhancements",
+		"Theme - DC",
+		"Tomorrow Color Schemes"
+	]
+}

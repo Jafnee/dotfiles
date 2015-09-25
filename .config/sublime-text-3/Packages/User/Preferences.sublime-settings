@@ -1,0 +1,16 @@
+{
+	"added_words":
+	[
+		"Jafnee",
+		"Jesmee"
+	],
+	"color_scheme": "Packages/Monokai Extended/Monokai Extended.tmTheme",
+	"dictionary": "Packages/Language - English/en_GB.dic",
+	"font_size": 11,
+	"ignored_packages":
+	[
+		"Vintage"
+	],
+	"theme": "DC_3.sublime-theme",
+	"translate_tabs_to_spaces": true
+}
