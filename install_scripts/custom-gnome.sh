@@ -4,7 +4,7 @@ apt-get install gnome-tweak-tool
 apt-get install dconf-editor
 
 # arc theme https://github.com/horst3180/Arc-theme
-sudo sh -c "echo 'deb http://download.opensuse.org/repositories/home:/Horst3180/xUbuntu_15.04/ /' >> /etc/apt/sources.list.d/arc-theme.list"
+sudo sh -c "echo 'deb http://download.opensuse.org/repositories/home:/Horst3180/xUbuntu_15.04/ /' > /etc/apt/sources.list.d/arc-theme.list"
 wget http://download.opensuse.org/repositories/home:Horst3180/xUbuntu_15.04/Release.key -O /tmp/Release.key
 sudo apt-key add - < /tmp/Release.key
 sudo apt-get update
