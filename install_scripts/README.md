@@ -1,5 +1,9 @@
 # Install Scripts
 Run with
-'''bash
+```bash
 sudo -H
-'''
+```
+e.g.
+```bash
+sudo -H ./all.sh
+```
