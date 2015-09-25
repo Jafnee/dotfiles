@@ -16,14 +16,19 @@ def _mkdirs(path):
 
 def backup():	
 	for df in cfg.dotfiles:
+		# backup dirs
+		for d, dp in zip(df.dirs, df.dir_paths):
+			try:
+				shutil.copytree(dp, joinpth(cfg.BACKUP_DIR, d))
+			except:
+				shutil.rmtree(joinpth(cfg.BACKUP_DIR, d))
+				shutil.copytree(dp, joinpth(cfg.BACKUP_DIR, d))
+
 		# backup files
 		for f, fp in zip(df.files, df.file_paths):
 			_mkdirs(joinpth(cfg.BACKUP_DIR, df.name, os.path.dirname(f)))
 			shutil.copy2(fp, joinpth(cfg.BACKUP_DIR, df.name, f))
 
-		# backup dirs
-		for d in df.dirs:
-			print(d)
 
 
 def print_help():
